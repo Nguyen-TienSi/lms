@@ -1,20 +1,17 @@
-// src/pages/TeacherExercise.js
-import React, { useState } from 'react';
-import AssignmentForm from '../../components/AssignmentForm';
-import AssignmentList from '../../components/AssignmentList';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import '../../styles/common.css';
+import '../../styles/teacher.css';
 
 const TeacherExercise = () => {
-    const [assignments, setAssignments] = useState([]);
-
-    const addAssignment = (assignment) => {
-        setAssignments([...assignments, assignment]);
-    };
+    const navigate = useNavigate();
 
     return (
-        <div>
-            <h1>Trang giao bài tập</h1>
-            <AssignmentForm onAddAssignment={addAssignment} />
-            <AssignmentList assignments={assignments} />
+        <div className="teacher-exercise-container">
+            <h1 className="teacher-exercise-title">Bài Tập của Giáo Viên</h1>
+            {/* Nội dung bài tập sẽ được hiển thị ở đây */}
+            <p>Danh sách các bài tập mà bạn đã tạo sẽ hiển thị ở đây.</p>
+            {/* Thêm các chức năng khác nếu cần */}
         </div>
     );
 };
