@@ -3,16 +3,17 @@ import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './pages/Login';
-import Home from './pages/Home';
-import TeacherList from './pages/Teacher/TeacherList';
-import TeacherDetail from './pages/Teacher/TeacherDetail';
-import SubjectList from './pages/Subject/SubjectList';
-import SubjectDetail from './pages/Subject/SubjectDetail';
-import StudentList from './pages/Student/StudentList';
-import StudentDetail from './pages/Student/StudentDetail';
-import Navbar from './layout/Navbar';
+import Home from './pages/Admin/Home';
+import TeacherList from './pages/Admin/Teacher/TeacherList';
+import TeacherDetail from './pages/Admin/Teacher/TeacherDetail';
+import SubjectList from './pages/Admin/Subject/SubjectList';
+import SubjectDetail from './pages/Admin/Subject/SubjectDetail';
+import StudentList from './pages/Admin/Student/StudentList';
+import StudentDetail from './pages/Admin/Student/StudentDetail';
+import Navbar from './pages/Admin/layout/Navbar';
 import NoPage from './pages/NoPage';
-
+import TeacherExercise from './pages/Users/pages/Teacher/TeacherExercise';
+import TeacherHome from './pages/Users/pages/Teacher/TeacherHome';
 export default function App() {
   const [loggedIn, setLoggedIn] = useState(false);
 
@@ -29,6 +30,11 @@ export default function App() {
             <Route path='subject/:id' element={<SubjectDetail />} />
             <Route path='student' element={<StudentList />} />
             <Route path='student/:id' element={<StudentDetail />} />
+          </Route>
+          <Route>
+          {/* <Route path='/user' element={loggedIn ? <Navigate to='/user/teacherhome' /> : <Login setLoggedIn={setLoggedIn} />} /> */}
+          <Route path='/user' element={<TeacherHome />} />
+          <Route path='teacherhome' element={<TeacherHome />} />
           </Route>
           <Route path='/*' element={<NoPage />} />
         </Routes>
