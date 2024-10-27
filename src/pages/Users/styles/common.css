@@ -1,72 +1,8 @@
-/* common.css */
-
-/* Header chung cho hệ thống */
-.common-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #004a8d;
-    color: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+.container{
+    position:relative;
+    padding-top: 15vh;
+    min-height: 74vh;
+    max-width: 1440px;
 }
 
-.common-header .logo a {
-    font-size: 1.5rem;
-    color: white;
-    text-decoration: none;
-}
 
-.common-header .nav-links a {
-    margin-left: 15px;
-    color: white;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.common-header .nav-links a:hover {
-    color: #d1e0f0;
-}
-
-/* Footer chung cho hệ thống */
-.common-footer {
-    text-align: center;
-    padding: 15px 0;
-    background-color: #003366;
-    color: white;
-    font-size: 0.9rem;
-    border-top: 1px solid #ccc;
-}
-
-.common-footer a {
-    color: #d1e0f0;
-    text-decoration: none;
-}
-
-/* Sidebar chung cho hệ thống */
-.common-sidebar {
-    width: 250px;
-    background-color: #f0f4f8;
-    padding: 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-}
-
-.common-sidebar ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.common-sidebar li {
-    margin-bottom: 15px;
-}
-
-.common-sidebar a {
-    text-decoration: none;
-    color: #333;
-    font-size: 1.1rem;
-    transition: color 0.3s;
-}
-
-.common-sidebar a:hover {
-    color: #1d72b8;
-}

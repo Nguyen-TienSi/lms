@@ -1,0 +1,112 @@
+
+.class-detail {
+    display: flex;
+}
+
+
+.sidebar-menu {
+    width: 250px;
+    border: 1px solid #ccc;
+    padding-right: 15px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-link {
+    display: block;
+    padding: 15px 20px;
+    color: #333;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border-radius: 8px;
+    margin: 5px;
+    background: linear-gradient(135deg, #e6f1fd, #d1e6fb);
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+.menu-link:hover {
+    background: #1262a3;
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Khu vực hiển thị nội dung */
+.content-area {
+    flex-grow: 1;
+    padding-left: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    margin-left: 10vw;
+  
+}
+
+.content-area div {
+    font-size: 1rem;
+    color: #333;
+    padding: 5px 0;
+}
+.content-area h2{
+    margin-top:0 ;
+
+}
+.btn-edit, .btn-save, .btn-cancel {
+    margin-top: 10px;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-edit {
+    background-color: #ff9900;
+    color: white;
+}
+
+.btn-save {
+    background-color: #28a745; /* Màu xanh */
+    color: white;
+}
+
+.btn-cancel {
+    background-color: #dc3545; /* Màu đỏ */
+    color: white;
+}
+
+.btn-edit:hover {
+    background-color: #e68a00; /* Đậm hơn khi hover */
+}
+
+.btn-save:hover {
+    background-color: #218838; /* Đậm hơn khi hover */
+}
+
+.btn-cancel:hover {
+    background-color: #c82333; /* Đậm hơn khi hover */
+}
+.meet-link{
+    text-decoration: none;
+    color: black;
+    margin-right: 20px;
+    padding: 5px 35px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+}
+.room-online{
+    display: flex;
+    flex-direction: row;
+    background-image:url(../../image/ggmeet.png);
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+    background-position:5px 7px;
+    
+}

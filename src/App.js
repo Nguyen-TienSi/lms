@@ -26,6 +26,8 @@ import ViewQuizResultsStudent from './pages/Users/pages/Student/ViewQuizResultsS
 // import cho giảng viên
 import TeacherExercise from './pages/Users/pages/Teacher/TeacherExercise';
 import TeacherHome from './pages/Users/pages/Teacher/TeacherHome';
+import Teacherhome from './pages/Users/pages/Teacher/Teacher-Home';
+import ClassDetail from './pages/Users/pages/Teacher/ClassDetail';
 import ViewClasses from './pages/Users/pages/Teacher/ViewClasses'; 
 import CreateOnlineClass from './pages/Users/pages/Teacher/CreateOnlineClass'; 
 import ViewAttendanceTeacher from './pages/Users/pages/Teacher/ViewAttendanceTeacher'; 
@@ -59,15 +61,17 @@ export default function App() {
     </Route>
 
     {/* Routes cho giảng viên */}
-    <Route path='/teacher' element={loggedIn ? <TeacherHome /> : <Navigate to='/' />} />
-    <Route path='teacherhome' element={<TeacherHome />} />
+    {/* <Route path='/teacher' element={loggedIn ? <TeacherHome /> : <Navigate to='/' />} /> */}
+    <Route path='/teacher' element={<TeacherHome />} />
+    <Route path='teacherhome' element={<Teacherhome />} />
+    <Route path='teacherhome/:id' element={<ClassDetail />} />
     <Route path='teacherexercise' element={<TeacherExercise />} />
     <Route path='view-classes' element={<ViewClasses />} />
     <Route path='view-online-class' element={<ViewOnlineClassTeacher />} />
     <Route path='create-online-class' element={<CreateOnlineClass />} />
     <Route path='view-attendance' element={<ViewAttendanceTeacher />} />
     <Route path='mark-attendance' element={<MarkAttendance />} />
-    <Route path='create-assignment' element={<CreateAssignment />} />
+    <Route path='teacherhome/:name/create-assignment' element={<CreateAssignment />} />
     <Route path='view-assignments' element={<ViewAssignments />} />
     <Route path='grade-assignments' element={<GradeAssignments />} />
     <Route path='create-quiz' element={<CreateQuiz />} />

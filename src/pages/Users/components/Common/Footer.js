@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/common.css';  // Import CSS chung cho cả hệ thống
+import './Footer.css';  // Import CSS chung cho cả hệ thống
 
 const Footer = () => {
     return (
