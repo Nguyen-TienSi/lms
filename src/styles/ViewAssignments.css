@@ -1,0 +1,96 @@
+/* ViewAssignments.css */
+.view-assignments-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 20px auto;
+    font-family: 'Arial', sans-serif;
+}
+
+.view-assignments-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+.assignments-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.assignment-item {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 15px;
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.assignment-item:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.assignment-item h2 {
+    font-size: 22px;
+    margin: 0 0 10px 0;
+    color: #2e7d32
+}
+
+.assignment-item p {
+    margin: 5px 0;
+    color: #555;
+}
+
+form {
+    margin-top: 10px;
+}
+
+label {
+    display: block;
+    font-size: 16px;
+    color: #555;
+    margin: 10px 0 5px 0;
+}
+
+textarea {
+    width: 100%;
+    height: 80px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: none;
+    transition: border-color 0.3s;
+}
+
+textarea:focus {
+    border-color: #2e7d32 ;
+    outline: none;
+}
+
+input[type="file"] {
+    margin-top: 10px;
+    border: none;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #2e7d32;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3; 
+}
+

@@ -1,0 +1,49 @@
+/* ViewQuizzes.css */
+.view-quizzes-container {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 20px auto;
+    font-family: 'Arial', sans-serif;
+}
+
+.view-quizzes-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+.quizzes-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.quizzes-list li {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 15px;
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.quizzes-list li:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.quizzes-list h2 {
+    font-size: 22px;
+    margin: 0;
+    color: #007bff;
+}
+
+.quizzes-list p {
+    font-size: 16px;
+    color: #555;
+    margin: 5px 0 0 0; /* Giảm khoảng cách giữa tiêu đề và ngày */
+}
