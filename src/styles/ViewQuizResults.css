@@ -1,0 +1,76 @@
+/* ViewQuizResults.css */
+.view-quiz-results-container {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: 40px auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* .view-quiz-results-container:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.15);
+} */
+
+.view-quiz-results-title {
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    text-align: center;
+    color: #333;
+}
+
+.quiz-results-table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.quiz-results-table th,
+.quiz-results-table td {
+    padding: 14px 16px;
+    text-align: center;
+    border-bottom: 1px solid #e6e6e6;
+    color: #555;
+    font-size: 16px;
+}
+
+.quiz-results-table th {
+    background-color: #2e7d32;;
+    color: #ffffff;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.quiz-results-table td {
+    background-color: #ffffff;
+    transition: background-color 0.3s ease;
+}
+
+.quiz-results-table tr:nth-child(even) td {
+    background-color: #f8faff;
+}
+
+.quiz-results-table tr:hover td {
+    background-color: #eaf4ff;
+}
+
+.quiz-results-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Styles for status column */
+.quiz-results-table td:last-child {
+    font-weight: bold;
+}
+
+.quiz-results-table td:last-child[data-status="Đạt"] {
+    color: #28a745;
+}
+
+.quiz-results-table td:last-child[data-status="Không đạt"] {
+    color: #dc3545;
+}

@@ -1,0 +1,53 @@
+.view-subjects-container {
+    width: 100%;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.view-subjects-title {
+    font-size: 2em;
+    color: #2e7d32;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.subjects-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.subject-item {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px 0;
+    transition: box-shadow 0.3s ease;
+}
+
+.subject-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.subject-name {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.subject-details {
+    margin-top: 5px;
+    font-size: 1em;
+    color: #555;
+}
+
+.subject-teacher {
+    margin-right: 15px;
+    font-weight: normal;
+}
+
+.subject-time {
+    font-weight: normal;
+}
