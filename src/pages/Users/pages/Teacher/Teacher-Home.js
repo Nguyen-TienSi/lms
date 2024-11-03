@@ -1,41 +1,63 @@
-import React from 'react';
-import '../../styles/Teacher/TeacherHome.css'; 
-import '../../styles/common.css';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 import Header from '../../components/Common/Header';
 import Footer from '../../components/Common/Footer';
-import { Link } from 'react-router-dom';
+import '../../styles/Teacher/TeacherHome.css'; // Đảm bảo import CSS của bạn
 
 const ClassList = () => {
-    const classes = [
-        { id: 1, name: 'Lớp Học Toán', img: require('../../image/image.png') },
-        { id: 2, name: 'Lớp Học Lý', img: require('../../image/image.png') },
-        { id: 3, name: 'Lớp Học Hóa', img: require('../../image/image.png') },
-        { id: 4, name: 'Lớp Học Tiếng Anh', img: require('../../image/image.png') },
-        { id: 5, name: 'Lớp Học Toán', img: require('../../image/image.png') },
-        { id: 6, name: 'Lớp Học Lý', img: require('../../image/image.png') },
-        { id: 7, name: 'Lớp Học Hóa', img: require('../../image/image.png') },
-        { id: 8, name: 'Lớp Học Tiếng Anh', img: require('../../image/image.png') },
-        { id: 9, name: 'Lớp Học Toán', img: require('../../image/image.png') },
-        { id: 10, name: 'Lớp Học Lý', img: require('../../image/image.png') },
-        { id: 11, name: 'Lớp Học Hóa', img: require('../../image/image.png') },
-        { id: 12, name: 'Lớp Học Tiếng Anh', img: require('../../image/image.png') },
-    ];
+    const [classes, setClasses] = useState([]); // Khởi tạo với mảng rỗng
+    const [loading, setLoading] = useState(true); // Trạng thái tải
+    const [error, setError] = useState(null); // Trạng thái lỗi
+
+    useEffect(() => {
+        const fetchClasses = async () => {
+            setLoading(true); // Bắt đầu trạng thái tải
+            try {
+                const response = await axios.get('http://localhost:5000/classes'); // Đường dẫn API
+                setClasses(response.data); // Cập nhật dữ liệu lớp học từ API
+            } catch (error) {
+                console.error('Error fetching classes:', error);
+                setError('Không thể tải danh sách lớp học. Vui lòng thử lại sau.'); // Cập nhật thông báo lỗi
+            } finally {
+                setLoading(false); // Kết thúc trạng thái tải
+            }
+        };
+
+        fetchClasses();
+    }, []);
 
     return (
         <div>
             <Header />
             <div className='container'>
-                <div className="class-list">
-                    <h1 className="class-list-title">Danh Sách Các Lớp Học</h1>
+                <h1 className="class-list-title">Danh Sách Các Lớp Học</h1>
+                {loading ? (
+                    <p>Đang tải danh sách lớp học...</p> // Thông báo tải
+                ) : error ? (
+                    <p className="error-message">{error}</p> // Thông báo lỗi
+                ) : (
                     <div className="class-grid">
-                        {classes.map((classItem) => (
-                            <Link to={`/teacherhome/${classItem.name}`} key={classItem.id} className="class-item">
-                                <img src={classItem.img} alt={classItem.name} />
-                                <h2>{classItem.name}</h2>
+                        {classes.length > 0 ? (
+                            classes.map((classItem) => (
+                                <Link to={`/teacherhome/${classItem.className}`} key={classItem.id} className="class-item-link">
+                                <div className="class-item">
+                                    {classItem.imageUrl && (
+                                        <img src={classItem.imageUrl} alt={classItem.className} />
+                                    )}
+                                    <h2>{classItem.className}</h2>
+                                    <p>Mã lớp: {classItem.classCode}</p>
+                                    <p>Giáo viên: {classItem.teacher.name}</p>
+                                    <p>Sinh viên: {classItem.students.join(', ')}</p>
+                                    <a href={classItem.onlineLink} target="_blank" rel="noopener noreferrer">Tham Gia Lớp Học</a>
+                                </div>
                             </Link>
-                        ))}
+                            ))
+                        ) : (
+                            <p>Không có lớp học nào được tìm thấy.</p>
+                        )}
                     </div>
-                </div>
+                )}
             </div>
             <Footer />
         </div>

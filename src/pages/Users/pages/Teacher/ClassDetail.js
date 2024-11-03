@@ -27,12 +27,13 @@ const ClassDetail = () => {
                         <h2>Thông Tin Lớp Học</h2>
                         <p>Đây là thông tin tổng quan về lớp học, bao gồm thông tin giáo viên, thời gian học, và các yêu cầu khác.</p>
                     </div>
+                      {/* Phần phòng học */}
+                      <RoomDetails />
 
                     {/* Phần bài tập */}
                     <AssignmentsList />
 
-                    {/* Phần phòng học */}
-                    <RoomDetails />
+                  
                 </div>
             </div>
             <Footer />

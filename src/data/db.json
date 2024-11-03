@@ -1,0 +1,123 @@
+{
+    "students": [
+      {
+        "id": "S1",
+        "name": "Học Sinh 1",
+        "classes": [
+          {
+            "id": "1",
+            "className": "Lớp Toán 10A",
+            "classCode": "MATH10A",
+            "onlineLink": "https://online-learning-link.com/class1",
+            "teacher": {
+              "name": "Thầy Nam",
+              "id": "T1"
+            },
+            "assignments": [
+              {
+                "date": "2024-10-01",
+                "tasks": [
+                  {
+                    "taskId": 101,
+                    "title": "Bài tập toán hình học",
+                    "assignedAt": "2024-10-01T08:00:00",
+                    "dueDate": "2024-10-05T23:59:00"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "className": "Lớp Lý 10A",
+            "classCode": "PHY10A",
+            "onlineLink": "https://online-learning-link.com/class2",
+            "teacher": {
+              "name": "Cô Lan",
+              "id": "T2"
+            },
+            "assignments": []
+          }
+        ]
+      },
+      {
+        "id": "S2",
+        "name": "Học Sinh 2",
+        "classes": [
+          {
+            "id": "1",
+            "className": "Lớp Toán 10A",
+            "classCode": "MATH10A",
+            "onlineLink": "https://online-learning-link.com/class1",
+            "teacher": {
+              "name": "Thầy Nam",
+              "id": "T1"
+            },
+            "assignments": []
+          },
+          {
+            "id": "3",
+            "className": "Lớp Hóa 11B",
+            "classCode": "CHEM11B",
+            "onlineLink": "https://online-learning-link.com/class3",
+            "teacher": {
+              "name": "Thầy Phong",
+              "id": "T3"
+            },
+            "assignments": []
+          }
+        ]
+      }
+    ],
+    "classes": [
+      {
+        "id": "1",
+        "className": "Lớp Toán 10A",
+        "classCode": "MATH10A",
+        "onlineLink": "https://online-learning-link.com/class1",
+        "teacher": {
+          "name": "Thầy Nam",
+          "id": "T1"
+        },
+        "students": ["S1", "S2"],
+        "assignments": [
+          {
+            "date": "2024-10-01",
+            "tasks": [
+              {
+                "taskId": 101,
+                "title": "Bài tập toán hình học",
+                "assignedAt": "2024-10-01T08:00:00",
+                "dueDate": "2024-10-05T23:59:00"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "className": "Lớp Lý 10A",
+        "classCode": "PHY10A",
+        "onlineLink": "https://online-learning-link.com/class2",
+        "teacher": {
+          "name": "Cô Lan",
+          "id": "T2"
+        },
+        "students": ["S1"],
+        "assignments": []
+      },
+      {
+        "id": "3",
+        "className": "Lớp Hóa 11B",
+        "classCode": "CHEM11B",
+        "onlineLink": "https://online-learning-link.com/class3",
+        "teacher": {
+          "name": "Thầy Phong",
+          "id": "T3"
+        },
+        "students": ["S2"],
+        "assignments": []
+      }
+    ]
+  }
+  
