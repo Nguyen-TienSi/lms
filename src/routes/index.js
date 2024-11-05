@@ -4,7 +4,7 @@ import Home from "../pages/Admin/Home";
 import Navbar from "../pages/Admin/layout/Navbar";
 import NoPage from "../pages/Users/auth/NoPage";
 
-import TeacherHome from "../pages/Users/pages/Teacher/TeacherHome";
+import TeacherHome from "../pages/Users/pages/Teacher/Teacher-Home";
 import TeacherDetail from "../pages/Admin/Teacher/TeacherDetail";
 import ClassDetail from "../pages/Users/pages/Teacher/ClassDetail";
 import CreateAssignment from "../pages/Users/pages/Teacher/CreateAssignment";
