@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, Outlet } from 'react-router-dom'
+import UserService from '../../../service/UserService'
 
 function Navbar() {
     return (
@@ -16,6 +17,9 @@ function Navbar() {
                     </li>
                     <li>
                         <button>Thêm sinh viên</button>
+                    </li>
+                    <li>
+                        <button onClick={async () => await UserService.logout()}>Logout</button>
                     </li>
                 </ul>
             </div>
