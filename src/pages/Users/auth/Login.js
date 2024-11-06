@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import UserService from '../../../service/UserService';
 
-const Login = () => {
+const Login = ({setLoggedIn}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();  // Khai báo điều hướng
@@ -12,6 +12,7 @@ const Login = () => {
     try {
       const result = await UserService.login(username, password);
       if (result && UserService.isAuthenticated()) {
+        setLoggedIn(UserService.isAuthenticated())
         if (UserService.isAdmin()) navigate('/admin/home');
         else if (UserService.isTeacher()) navigate('/teacher');
         else if (UserService.isStudent()) navigate('/student');

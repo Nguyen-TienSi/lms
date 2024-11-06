@@ -10,7 +10,7 @@ import AssignmentsList from '../../components/Teacher/AssignmentsList';
 const ClassDetail = () => {
     return (
         <div>
-            <Header />
+            {/* <Header /> */}
             <div className="container class-detail">
                 <div className="sidebar-menu">
                     <ul>
@@ -36,7 +36,7 @@ const ClassDetail = () => {
                   
                 </div>
             </div>
-            <Footer />
+            {/* <Footer /> */}
         </div>
     );
 };

@@ -32,7 +32,7 @@ const ClassList = () => {
 
     return (
         <div>
-            <Header />
+            {/* <Header /> */}
             <div className='container'>
                 <h1 className="class-list-title">Danh Sách Các Lớp Học</h1>
                 {loading ? (
@@ -62,7 +62,7 @@ const ClassList = () => {
                     </div>
                 )}
             </div>
-            <Footer />
+            {/* <Footer /> */}
         </div>
     );
 };

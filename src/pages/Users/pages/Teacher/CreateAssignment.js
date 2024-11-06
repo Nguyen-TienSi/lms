@@ -63,7 +63,7 @@ const CreateAssignment = () => {
 
     return (
         <div>
-            <Header />
+            {/* <Header /> */}
             <div className='container'>
                 <div className="create-assignment">
                     <div className="form-container">
@@ -109,7 +109,7 @@ const CreateAssignment = () => {
                     </div>
                 </div>
             </div>
-            <Footer />
+            {/* <Footer /> */}
         </div>
     );
 };

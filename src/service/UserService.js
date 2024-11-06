@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import axiosInstance from './axios_helper'
 
 class UserService {
