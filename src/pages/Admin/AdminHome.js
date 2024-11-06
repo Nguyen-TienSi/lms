@@ -1,8 +1,7 @@
 import React from 'react'
-import Navbar from './layout/Navbar'
 import { Link } from 'react-router-dom'
 
-function Home() {
+function AdminHome() {
   return (
     <div>
       <div>
@@ -43,4 +42,4 @@ function Home() {
   )
 }
 
-export default Home
+export default AdminHome

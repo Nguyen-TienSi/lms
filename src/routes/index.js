@@ -1,8 +1,9 @@
 // routes/index.js
 import Login from "../pages/Users/auth/Login";
-import Home from "../pages/Admin/Home";
-import Navbar from "../pages/Admin/layout/Navbar";
 import NoPage from "../pages/Users/auth/NoPage";
+
+import AdminHome from "../pages/Admin/AdminHome";
+import TeacherList from "../pages/Admin/Teacher/TeacherList";
 
 import TeacherHome from "../pages/Users/pages/Teacher/Teacher-Home";
 import TeacherDetail from "../pages/Admin/Teacher/TeacherDetail";
@@ -25,24 +26,31 @@ export const publicRoutes = [
 ];
 
 // Các route riêng tư (private routes)
-export const privateRoutes = [
-  { path: "/admin/home", component: Home },
-  { path: "/admin/navbar", component: Navbar },
+export const privateRoutes = {
+  // Route cho quản trị viên
+  admin: [
+    { path: "/admin/home", component: AdminHome },
+    { path: "/admin/teacher", component: TeacherList}
+  ],
 
   // Route cho giảng viên
-  { path: "/teacher", component: TeacherHome },
-  { path: "/teacher/:id", component: TeacherDetail },
-  { path: "/teacherhome/:id", component: ClassDetail },
-  { path: "/teacherhome/:name/create-assignment", component: CreateAssignment },
-  { path: "/grade-assignments", component: GradeAssignments },
-  { path: "/create-quiz", component: CreateQuiz },
-  { path: "/view-quiz-results", component: ViewQuizResultsTeacher },
+  teacher: [
+    { path: "/teacher", component: TeacherHome },
+    { path: "/teacher/:id", component: TeacherDetail },
+    { path: "/teacherhome/:id", component: ClassDetail },
+    { path: "/teacherhome/:name/create-assignment", component: CreateAssignment },
+    { path: "/grade-assignments", component: GradeAssignments },
+    { path: "/create-quiz", component: CreateQuiz },
+    { path: "/view-quiz-results", component: ViewQuizResultsTeacher },
+  ],
 
   // Route cho sinh viên
-  { path: "/student", component: StudentHome },
-  { path: "/studenthome", component: StudentHome },
-  { path: "/view-subjects", component: ViewSubjects },
-  { path: "/view-online-class", component: ViewOnlineClassStudent },
-  { path: "/submit-assignment", component: SubmitAssignment },
-  { path: "/view-quiz-results", component: ViewQuizResultsStudent },
-];
+  student: [
+    { path: "/student", component: StudentHome },
+    { path: "/studenthome", component: StudentHome },
+    { path: "/view-subjects", component: ViewSubjects },
+    { path: "/view-online-class", component: ViewOnlineClassStudent },
+    { path: "/submit-assignment", component: SubmitAssignment },
+    { path: "/view-quiz-results", component: ViewQuizResultsStudent },
+  ]
+};
