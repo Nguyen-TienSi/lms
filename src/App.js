@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { privateRoutes, publicRoutes } from './routes';
-import { ProtectedRoute, Layout } from './pages/Users/components/Layouts';
+import ProtectedRoute from './pages/components/Layouts';
 import UserService from './service/UserService';
 
 function App() {
@@ -16,7 +16,6 @@ function App() {
         })}
 
         <Route element={<ProtectedRoute />}>
-          <Route element={<Layout />}>
             {/* ADMIN ROUTES */}
             {UserService.isAdmin() && privateRoutes.admin.map((route, index) => (
               <Route key={index} path={route.path} element={<route.component />} />
@@ -29,7 +28,6 @@ function App() {
             {UserService.isStudent() && privateRoutes.student.map((route, index) => (
               <Route key={index} path={route.path} element={<route.component />} />
             ))}
-          </Route>
         </Route>
       </Routes>
     </BrowserRouter>

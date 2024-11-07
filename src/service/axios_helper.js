@@ -13,14 +13,17 @@ const axiosInstance = axios.create({
     withCredentials: true
 })
 
-axiosInstance.interceptors.request.use(config => {
-    const auth = getAuth()
-    if (auth.username && auth.password) { 
-        config.headers['Authorization'] = 'Basic ' + btoa(`${auth.username}:${auth.password}`);
+axiosInstance.interceptors.request.use(
+    (config) => {
+        const auth = getAuth();
+        if (auth.username && auth.password) {
+            config.headers['Authorization'] = 'Basic ' + btoa(`${auth.username}:${auth.password}`);
+        }
+        return config;
+    },
+    (error) => {
+        return Promise.reject(error);
     }
-    return config
-}, error => {
-    return Promise.reject(error)
-})
+);
 
 export default axiosInstance

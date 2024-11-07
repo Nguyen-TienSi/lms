@@ -3,7 +3,7 @@ import axiosInstance from './axios_helper'
 class UserService {
     static async login(username, password) {
         try {
-            const result = await axiosInstance.post("/api/auth/login", { username, password })
+            const result = await axiosInstance.post("/api/users/login", { username, password })
             const { status, message, role } = result.data
             if (status === 'AUTHENTICATED') {
                 localStorage.setItem('authentication', status);
@@ -15,13 +15,13 @@ class UserService {
             }
             return result.data
         } catch (error) {
-            throw error
+            throw new Error(error)
         }
     }
 
     /* AUTHENTICATION CHECKER */
     static async logout() {
-        await axiosInstance.post('api/auth/logout')
+        await axiosInstance.post('api/users/logout')
         localStorage.clear()
         window.location.href = '/'
     }
