@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axiosInstance from '../../../../service/axios_helper';
 
-function TeacherList() {
-  const [teacherData, setUserData] = useState([]);
+function AdminTeachers() {
+  const [teacherData, setTeacherData] = useState([]);
 
   useEffect(() => {
     loadUser()
@@ -11,7 +11,7 @@ function TeacherList() {
 
   const loadUser = async () => {
     const result = await axiosInstance.get('/api/teachers')
-    setUserData(result.data)
+    setTeacherData(result.data)
   }
 
   const deleteUser = async (id) => {
@@ -54,4 +54,4 @@ function TeacherList() {
   );
 }
 
-export default TeacherList;
+export default AdminTeachers;

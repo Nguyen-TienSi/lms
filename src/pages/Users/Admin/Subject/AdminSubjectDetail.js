@@ -1,7 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 
-function SubjectDetail() {
+function AdminSubjectDetail() {
     const { id } = useParams()
 
     return (
@@ -9,4 +9,4 @@ function SubjectDetail() {
     )
 }
 
-export default SubjectDetail
+export default AdminSubjectDetail

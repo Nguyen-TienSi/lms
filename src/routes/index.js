@@ -3,9 +3,12 @@ import Login from "../pages/auth/Login";
 import NoPage from "../pages/auth/NoPage";
 
 import AdminHome from '../pages/Users/Admin/AdminHome'
-import SubjectList from "../pages/Users/Admin/Subject/SubjectList";
-import TeacherList from "../pages/Users/Admin/Teacher/TeacherList";
-import TeacherDetail from "../pages/Users/Admin/Teacher/TeacherDetail";
+import AdminSubjects from "../pages/Users/Admin/Subject/AdminSubjects";
+import AdminSubjectDetail from "../pages/Users/Admin/Subject/AdminSubjectDetail";
+import AdminTeachers from "../pages/Users/Admin/Teacher/AdminTeachers";
+import AdminTeacherDetail from "../pages/Users/Admin/Teacher/AdminTeacherDetail";
+import AdminStudents from "../pages/Users/Admin/Student/AdminStudents";
+import AdminStudentDetail from "../pages/Users/Admin/Student/AdminStudentDetail";
 
 import TeacherHome from "../pages/Users/Teacher/Teacher-Home";
 import ClassDetail from "../pages/Users/Teacher/ClassDetail";
@@ -31,11 +34,12 @@ export const privateRoutes = {
   // Route cho quản trị viên
   admin: [
     { path: "/admin/home", component: AdminHome },
-    { path: "/admin/subject", component: SubjectList },
-    { path: "/admin/teacher", component: TeacherList },
-    { path: "/admin/teacher/:id", component: TeacherDetail },
-    // { path: "/admin/student", component: StudentList },
-    // { path: "admin/student/:id", component: StudentDetail }
+    { path: "/admin/subject", component: AdminSubjects },
+    { path: "/admin/subject/:id", component: AdminSubjectDetail },
+    { path: "/admin/teacher", component: AdminTeachers },
+    { path: "/admin/teacher/:id", component: AdminTeacherDetail },
+    { path: "/admin/student", component: AdminStudents },
+    { path: "admin/student/:id", component: AdminStudentDetail }
   ],
 
   // Route cho giảng viên

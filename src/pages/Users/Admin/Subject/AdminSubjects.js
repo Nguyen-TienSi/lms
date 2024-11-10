@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function SubjectList() {
+function AdminSubjects() {
     const subject = { id: 2 }
 
     return (
@@ -19,7 +19,7 @@ function SubjectList() {
                         <td>234</td>
                         <td>Lập trình hướng đối tượng</td>
                         <td>
-                            <Link to={`/subject/${subject.id}`}>Chi tiết</Link>
+                            <Link to={`/admin/subject/${subject.id}`}>Chi tiết</Link>
                             <button>Xóa</button>
                         </td>
                     </tr>
@@ -29,4 +29,4 @@ function SubjectList() {
     )
 }
 
-export default SubjectList
+export default AdminSubjects
