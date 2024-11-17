@@ -6,17 +6,17 @@ function AdminTeachers() {
   const [teacherData, setTeacherData] = useState([]);
 
   useEffect(() => {
-    loadUser()
+    loadTeacherData()
   }, [])
 
-  const loadUser = async () => {
+  const loadTeacherData = async () => {
     const result = await axiosInstance.get('/api/teachers')
     setTeacherData(result.data)
   }
 
   const deleteUser = async (id) => {
     await axiosInstance.delete(`/api/users/delete/${id}`)
-    loadUser()
+    loadTeacherData()
   }
 
   return (
@@ -43,7 +43,7 @@ function AdminTeachers() {
               <td>{teacher.userDto.birthDate}</td>
               <td>{teacher.userDto.phone}</td>
               <td>
-                <Link to={`/admin/teacher/${teacher.userDto.id}`}>Chi tiết</Link>
+                <Link to={`/teacher/${teacher.userDto.id}`}>Chi tiết</Link>
                 <button onClick={() => deleteUser(teacher.userDto.id)}>Xóa</button>
               </td>
             </tr>

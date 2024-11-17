@@ -7,7 +7,7 @@ function AdminHome() {
       <div>
         <ul>
           <li>
-            <Link>
+            <Link to={'/course'}>
               <p>0</p>
               <p>Khóa học</p>
             </Link>
@@ -19,19 +19,19 @@ function AdminHome() {
             </Link>
           </li>
           <li>
-            <Link to='/admin/teacher'>
+            <Link to={'/teacher'}>
               <p>10</p>
               <p>Giảng viên</p>
             </Link>
           </li>
           <li>
-            <Link to='/admin/student'>
+            <Link to={'/student'}>
               <p>102</p>
               <p>Sinh viên</p>
             </Link>
           </li>
           <li>
-            <Link to='/admin/subject'>
+            <Link to={'/subject'}>
               <p>120</p>
               <p>Môn học</p>
             </Link>

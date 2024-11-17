@@ -5,7 +5,7 @@ import UserService from '../../service/UserService'
 const Login = ({setLoggedIn}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate();  // Khai báo điều hướng
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -13,9 +13,7 @@ const Login = ({setLoggedIn}) => {
       const result = await UserService.login(username, password);
       if (result && UserService.isAuthenticated()) {
         setLoggedIn(UserService.isAuthenticated())
-        if (UserService.isAdmin()) navigate('/admin/home');
-        else if (UserService.isTeacher()) navigate('/teacher');
-        else if (UserService.isStudent()) navigate('/student');
+        navigate('/home')
       }
     } catch (error) {
       throw error

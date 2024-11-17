@@ -6,17 +6,17 @@ function AdminStudents() {
     const [studentData, setStudentData] = useState([]);
 
     useEffect(() => {
-        loadUser()
+        loadStudentData()
     }, [])
 
-    const loadUser = async () => {
+    const loadStudentData = async () => {
         const result = await axiosInstance.get('/api/students')
         setStudentData(result.data)
     }
 
     const deleteUser = async (id) => {
         await axiosInstance.delete(`/api/users/delete/${id}`)
-        loadUser()
+        loadStudentData()
     }
 
     return (
@@ -43,7 +43,7 @@ function AdminStudents() {
                             <td>{student.userDto.birthDate}</td>
                             <td>{student.userDto.phone}</td>
                             <td>
-                                <Link to={`/admin/student/${student.userDto.id}`}>Chi tiết</Link>
+                                <Link to={`/student/${student.userDto.id}`}>Chi tiết</Link>
                                 <button onClick={() => deleteUser(student.userDto.id)}>Xóa</button>
                             </td>
                         </tr>

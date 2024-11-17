@@ -1,80 +1,77 @@
-// src/pages/Users/pages/Student/StudentHome.js
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import '../../../styles/common.css';  // Import CSS chung cho cả hệ thống
-import '../../../styles/Student/student.css';  // Import CSS dành riêng cho sinh viên
+import React, { useState, useEffect } from 'react'
+import axiosInstance from '../../../service/axios_helper'
+import { Link } from 'react-router-dom';
 
-const StudentHome = () => {
-    const navigate = useNavigate();
+function StudentHome() {
+  const [courses, setCourses] = useState([]);
+  const [student, setStudent] = useState({});
+  const [classes, setClasses] = useState({});
+  const [subjects, setSubjects] = useState({});
+  const [semester, setSemester] = useState({});
 
-    // Hàm điều hướng đến trang cụ thể
-    const handleNavigation = (path) => {
-        navigate(path);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [coursesResponse, studentResponse] = await Promise.all([
+          axiosInstance.get('/api/courses/user'),
+          axiosInstance.get('/api/users/profile'),
+        ]);
+
+        setCourses(coursesResponse.data);
+        setStudent(studentResponse.data);
+
+        if (coursesResponse.data.length > 0) {
+          //Use map to create an array of promises
+          const classPromises = coursesResponse.data.map(course => axiosInstance.get(`/api/classes/${course.classId}`));
+          const subjectPromises = coursesResponse.data.map(course => axiosInstance.get(`/api/subjects/${course.subjectId}`));
+          const semesterPromise = axiosInstance.get(`/api/semesters/${coursesResponse.data[0].semesterId}`);
+
+          const [classResults, subjectResults, semesterResult] = await Promise.all([
+            Promise.all(classPromises),
+            Promise.all(subjectPromises),
+            semesterPromise,
+          ]);
+
+          // Create lookup objects for classes and subjects
+          const classesObj = {};
+          classResults.forEach(result => classesObj[result.data.id] = result.data);
+          setClasses(classesObj);
+
+          const subjectsObj = {};
+          subjectResults.forEach(result => subjectsObj[result.data.id] = result.data);
+          setSubjects(subjectsObj);
+
+          setSemester(semesterResult.data);
+        }
+
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
     };
 
-    return (
-        <div className="student-container">
-            <h1 className="student-title">Chào mừng Sinh viên!</h1>
-            
-            <div className="student-buttons">
-                <button 
-                    className="student-button"
-                    onClick={() => handleNavigation('/view-subjects')}
-                >
-                    Xem Môn Học
-                </button>
-                
-                <button 
-                    className="student-button"
-                    onClick={() => handleNavigation('/view-online-class')}
-                >
-                    Xem Phòng Học Trực Tuyến
-                </button>
-                
-                <button 
-                    className="student-button"
-                    onClick={() => handleNavigation('/view-assignments')}
-                >
-                    Xem Bài Tập
-                </button>
-                
-                <button 
-                    className="student-button"
-                    onClick={() => handleNavigation('/submit-assignment')}
-                >
-                    Nộp Bài Tập
-                </button>
-                
-                <button 
-                    className="student-button"
-                    onClick={() => handleNavigation('/view-quizzes')}
-                >
-                    Xem Bài Kiểm Tra
-                </button>
-                
-                <button 
-                    className="student-button"
-                    onClick={() => handleNavigation('/take-quiz')}
-                >
-                    Làm Bài Kiểm Tra
-                </button>
-                
-                <button 
-                    className="student-button"
-                    onClick={() => handleNavigation('/view-quiz-results')}
-                >
-                    Xem Kết Quả Bài Kiểm Tra
-                </button>
-                
-                <button 
-                    className="student-button"
-                    onClick={() => handleNavigation('/view-attendance')}
-                >
-                    Xem Điểm Danh
-                </button>
-            </div>
-        </div>
-    );
-};
+    fetchData();
+  }, []);
 
-export default StudentHome;
+  return (
+    <div>
+      <div>
+        <h2>Xin chào {student.firstName + " " + student.lastName}</h2>
+      </div>
+      <div>
+        {courses.map((course, index) => (
+          <div key={index}>
+            <Link to={`/course/${course.id}`}>
+              <h3>[{course.id}] - {subjects[course.subjectId]?.name}</h3>
+              <ul>
+                <li>Lớp: {classes[course.classId]?.name}</li>
+                <li>Học kỳ: {semester.name}</li>
+              </ul>
+            </Link>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default StudentHome
