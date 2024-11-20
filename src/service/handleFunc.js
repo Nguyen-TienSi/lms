@@ -1,3 +1,5 @@
+import axiosInstance from "./axios_helper";
+
 export function handleFormatDateTime(datetime) {
     if (!datetime) {
         return { formattedDate: 'N/A', formattedTime: 'N/A', period: 'N/A' };
@@ -19,3 +21,21 @@ export function handleFormatDateTime(datetime) {
 
     return { formattedDate, formattedTime, period };
 }
+
+export const handleDownloadMaterial = async (enpoint, material) => {
+    try {
+        const response = await axiosInstance.get(`${enpoint}/${material.id}`, {
+            responseType: 'blob',
+        });
+
+        const url = window.URL.createObjectURL(new Blob([response.data]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', material.fileName);
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+    } catch (error) {
+        console.error("Error downloading material:", error);
+    }
+};

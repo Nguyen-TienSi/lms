@@ -1,0 +1,73 @@
+.admin-teachers-container {
+    padding: 20px;
+}
+
+.admin-teachers-container h2 {
+    margin-bottom: 15px;
+}
+
+.admin-teachers-container button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.admin-teachers-container button:hover {
+    background-color: #45a049;
+}
+
+.admin-teachers-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.admin-teachers-container th,
+.admin-teachers-container td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.admin-teachers-container th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.admin-teachers-container td a {
+    text-decoration: none;
+    color: #333;
+    margin-right: 10px;
+}
+
+.admin-teachers-container td a:hover {
+    text-decoration: underline;
+}
+
+.admin-teachers-container td button {
+    background-color: #f44336;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.admin-teachers-container td button:hover {
+    background-color: #d32f2f;
+}
+
+@media (max-width: 768px) {
+    .admin-teachers-container table {
+        overflow-x: auto;
+    }
+
+    .admin-teachers-container th,
+    .admin-teachers-container td {
+        padding: 5px;
+    }
+}

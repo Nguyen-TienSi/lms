@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import axiosInstance from '../../../service/axios_helper';
+import { handleFormatDateTime } from '../../../service/handleFunc';
+import '../../../styles/Student/StudentAssignmentDetails.css'
 
 function StudentAssignmentDetails() {
     const { id } = useParams();
-    const [assignment, setAssignment] = useState(null);
-    const [submission, setSubmission] = useState(null);
-    const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [assignment, setAssignment] = useState({});
+    const [submission, setSubmission] = useState({});
     const [showButton, setShowButton] = useState(true);
 
     useEffect(() => {
@@ -20,48 +20,44 @@ function StudentAssignmentDetails() {
 
                 setAssignment(assignmentResponse.data)
                 setSubmission(submissionResponse.data)
-                
-                if (submissionResponse.data) {
-                    setShowButton(false)
-                }
             } catch (error) {
-                setError(error);
-                console.error("Error fetching assignment:", error);
-            } finally {
-                setLoading(false);
+                console.error("Error fetching data: ", error)
             }
         };
         fetchData();
     }, []);
 
-    if (loading) {
-        return <div>Loading...</div>;
-    }
+    useEffect(() => {
+        if (Object.keys(submission).length > 0) {
+            setShowButton(false)
+        }
+    }, [submission])
 
-    if (error) {
-        return <div>Error: {error.message}</div>;
-    }
-
-    const formatDate = (dateString) => {
-        const date = new Date(dateString);
-        return date.toLocaleDateString('vi-VN', { 
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit',
-            second: '2-digit'
-        });
+    const formatDate = (date) => {
+        const { formattedDate, formattedTime, period } = handleFormatDateTime(date);
+        return `${formattedDate} lúc ${formattedTime} ${period}`;
     };
 
     return (
-        <div>
-            <h2>{assignment.name}</h2>
-            <p>{assignment.description}</p>
-            <p><strong>Ngày bắt đầu:</strong> {formatDate(assignment.startDate)}</p>
-            <p><strong>Ngày kết thúc:</strong> {formatDate(assignment.endDate)}</p>
-            {showButton && <Link to={`/question/assignment/${id}`} state={assignment.duration}><button>Câu hỏi trắc nghiệm</button></Link>}
-        </div>
+        Object.keys(assignment).length === 0 ? (
+            <p>Loading ...</p>
+        ) : (
+            <div className='student-assignment-details-container'>
+                <h2>{assignment.name}</h2>
+                <p>{assignment.description}</p>
+                <p>
+                    <strong>Ngày bắt đầu:</strong> {formatDate(assignment.startDate)}
+                </p>
+                <p>
+                    <strong>Ngày kết thúc:</strong> {formatDate(assignment.endDate)}
+                </p>
+                {showButton && (
+                    <Link to={`/question/assignment/${id}`} state={assignment.duration}>
+                        <button>Câu hỏi trắc nghiệm</button>
+                    </Link>
+                )}
+            </div>
+        )
     );
 }
 

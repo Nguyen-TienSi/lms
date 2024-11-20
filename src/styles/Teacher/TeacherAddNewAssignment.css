@@ -1,0 +1,113 @@
+.teacher-add-assignment-container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.teacher-add-assignment-container h2,
+.teacher-add-assignment-container h3 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.teacher-add-assignment-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.teacher-add-assignment-container input[type="text"],
+.teacher-add-assignment-container input[type="number"],
+.teacher-add-assignment-container input[type="datetime-local"],
+.teacher-add-assignment-container textarea,
+.teacher-add-assignment-container input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.teacher-add-assignment-container button {
+    padding: 10px 20px;
+    margin: 10px 5px;
+    background-color: #0069d9;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.teacher-add-assignment-container button:hover {
+    opacity: 0.8;
+}
+
+.teacher-add-assignment-container .add-question-button {
+    background-color: #28a745;
+}
+
+.teacher-add-assignment-container .remove-question-button,
+.teacher-add-assignment-container .remove-answer-button {
+    background-color: #dc3545;
+}
+
+.teacher-add-assignment-container .add-answer-button {
+    background-color: #17a2b8;
+}
+
+.teacher-add-assignment-container .submit-button {
+    background-color: #007bff;
+    margin-top: 20px;
+}
+
+.question-container {
+    margin-top: 20px;
+}
+
+.question-content,
+.answer-content {
+    margin-bottom: 10px;
+}
+
+.answer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.answer label {
+    margin-left: 10px;
+}
+
+.answer button {
+    margin-left: auto;
+}
+
+@media (max-width: 768px) {
+    .teacher-add-assignment-container {
+        width: 95%;
+    }
+
+    .answer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .answer label {
+        margin-top: 5px;
+        margin-left: 0;
+    }
+
+    .answer button {
+        margin-top: 5px;
+        margin-left: 0;
+    }
+}

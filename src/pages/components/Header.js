@@ -1,10 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import UserService from '../../service/UserService'
+import '../../styles/components/Header.css'
 
 function Header() {
     return (
-        <div>
+        <header>
             <div>
                 <Link to='/home'>
                     <h1>Hệ thống quản lý lớp học trực tuyến</h1>
@@ -13,11 +14,11 @@ function Header() {
             <div>
                 <ul>
                     <li>
-                        <button onClick={async () => await UserService.logout()}>Logout</button>
+                        <button onClick={() => UserService.logout()}>Đăng xuất</button>
                     </li>
                 </ul>
             </div>
-        </div>
+        </header>
     )
 }
 

@@ -1,26 +1,37 @@
 import React, { useState, useEffect } from 'react'
 import axiosInstance from '../../../../service/axios_helper';
 import { Link } from 'react-router-dom';
+import { handleFormatDateTime } from '../../../../service/handleFunc';
+import '../../../../styles/Admin/AdminStudents.css'
 
 function AdminStudents() {
-    const [studentData, setStudentData] = useState([]);
+    const [students, setStudents] = useState([]);
 
     useEffect(() => {
-        loadStudentData()
+        const fetchData = async () => {
+            try {
+                const studentsResponse = await axiosInstance.get('/api/students')
+                setStudents(studentsResponse.data)
+            } catch (error) {
+                console.error("Error fetching data:", error)
+            }
+        }
+        fetchData()
     }, [])
 
-    const loadStudentData = async () => {
-        const result = await axiosInstance.get('/api/students')
-        setStudentData(result.data)
-    }
-
     const deleteUser = async (id) => {
-        await axiosInstance.delete(`/api/users/delete/${id}`)
-        loadStudentData()
+        try {
+            await axiosInstance.delete(`/api/users/delete/${id}`)
+            setStudents(prevStudents => prevStudents.filter(student => student.userDto.id !== id))
+        } catch (error) {
+            console.error("Error delete object:", error)
+        }
     }
 
     return (
-        <div>
+        <div className='admin-students-container'>
+            <h2>Danh sách học viên</h2>
+            <Link to={'/student/add'}><button>Thêm học viên</button></Link>
             <table>
                 <thead>
                     <tr>
@@ -30,24 +41,29 @@ function AdminStudents() {
                         <th>Giới tính</th>
                         <th>Ngày sinh</th>
                         <th>Số điện thoại</th>
+                        <th>Email</th>
                         <th>Hành động</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {studentData.map((student, index) => (
-                        <tr key={student.userDto.id}>
-                            <td>{index + 1}</td>
-                            <td>{student.userDto.id}</td>
-                            <td>{student.userDto.firstName} {student.userDto.lastName}</td>
-                            <td>{student.userDto.gender}</td>
-                            <td>{student.userDto.birthDate}</td>
-                            <td>{student.userDto.phone}</td>
-                            <td>
-                                <Link to={`/student/${student.userDto.id}`}>Chi tiết</Link>
-                                <button onClick={() => deleteUser(student.userDto.id)}>Xóa</button>
-                            </td>
-                        </tr>
-                    ))}
+                    {students.map((student, index) => {
+                        const formattedDate = handleFormatDateTime(student.userDto.birthDate).formattedDate
+                        return (
+                            <tr key={student.userDto.id}>
+                                <td>{index + 1}</td>
+                                <td>{student.userDto.id}</td>
+                                <td>{student.userDto.firstName} {student.userDto.lastName}</td>
+                                <td>{student.userDto.gender ? "Nam" : "Nữ"}</td>
+                                <td>{formattedDate}</td>
+                                <td>{student.userDto.phone}</td>
+                                <td>{student.userDto.username}</td>
+                                <td>
+                                    <Link to={`/student/${student.userDto.id}`}>Chi tiết</Link>
+                                    <button onClick={() => deleteUser(student.userDto.id)}>Xóa</button>
+                                </td>
+                            </tr>
+                        )
+                    })}
                 </tbody>
             </table>
         </div>

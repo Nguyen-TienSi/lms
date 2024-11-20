@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import axiosInstance from '../../../service/axios_helper'
+import '../../../styles/Teacher/TeacherAddNewAssignment.css'
 
 function TeacherAddNewAssignment() {
     const location = useLocation();
-    const [assignment, setAssignment] = useState({
+    const [newAssignment, setNewAssignment] = useState({
         name: "",
         description: "",
         startDate: "",
@@ -17,47 +18,47 @@ function TeacherAddNewAssignment() {
 
     const handleInputChange = (e) => {
         const { name, value, type, files } = e.target;
-        setAssignment((prevAssignment) => ({
+        setNewAssignment((prevAssignment) => ({
             ...prevAssignment,
             [name]: type === 'file' ? files[0] : value,
         }));
     };
 
     const addQuestion = () => {
-        setAssignment((prevAssignment) => ({
+        setNewAssignment((prevAssignment) => ({
             ...prevAssignment,
             questions: [...prevAssignment.questions, { question: '', answerDtoList: [] }],
         }));
     };
 
     const removeQuestion = (index) => {
-        const updatedQuestions = [...assignment.questions];
+        const updatedQuestions = [...newAssignment.questions];
         updatedQuestions.splice(index, 1);
-        setAssignment({ ...assignment, questions: updatedQuestions });
+        setNewAssignment({ ...newAssignment, questions: updatedQuestions });
     };
 
     const handleQuestionChange = (index, field, value) => {
-        const updatedQuestions = [...assignment.questions];
+        const updatedQuestions = [...newAssignment.questions];
         updatedQuestions[index][field] = value;
-        setAssignment({ ...assignment, questions: updatedQuestions });
+        setNewAssignment({ ...newAssignment, questions: updatedQuestions });
     };
 
     const addAnswer = (questionIndex) => {
-        const updatedQuestions = [...assignment.questions];
+        const updatedQuestions = [...newAssignment.questions];
         updatedQuestions[questionIndex].answerDtoList.push({ answer: '', isCorrect: false });
-        setAssignment({ ...assignment, questions: updatedQuestions });
+        setNewAssignment({ ...newAssignment, questions: updatedQuestions });
     };
 
     const removeAnswer = (questionIndex, answerIndex) => {
-        const updatedQuestions = [...assignment.questions];
+        const updatedQuestions = [...newAssignment.questions];
         updatedQuestions[questionIndex].answerDtoList.splice(answerIndex, 1);
-        setAssignment({ ...assignment, questions: updatedQuestions });
+        setNewAssignment({ ...newAssignment, questions: updatedQuestions });
     };
 
     const handleAnswerChange = (questionIndex, answerIndex, field, value) => {
-        const updatedQuestions = [...assignment.questions];
+        const updatedQuestions = [...newAssignment.questions];
         updatedQuestions[questionIndex].answerDtoList[answerIndex][field] = value;
-        setAssignment({ ...assignment, questions: updatedQuestions });
+        setNewAssignment({ ...newAssignment, questions: updatedQuestions });
     };
 
     const appendFormData = (formData, data, parentKey = '') => {
@@ -79,8 +80,8 @@ function TeacherAddNewAssignment() {
         try {
             const formData = new FormData();
             const formattedAssignment = {
-                ...assignment,
-                duration: `PT${assignment.duration}M`
+                ...newAssignment,
+                duration: `PT${newAssignment.duration}M`
             };
             appendFormData(formData, formattedAssignment)
             const response = await axiosInstance.post('/api/assignments/add', formData);
@@ -96,7 +97,7 @@ function TeacherAddNewAssignment() {
     };
 
     return (
-        <div>
+        <div className='teacher-add-assignment-container'>
             <h2>Tạo bài tập mới</h2>
             <form onSubmit={handleSubmit}>
                 <div>
@@ -104,7 +105,7 @@ function TeacherAddNewAssignment() {
                     <input
                         type="text"
                         name="name"
-                        value={assignment.name}
+                        value={newAssignment.name}
                         onChange={handleInputChange}
                         required
                     />
@@ -113,7 +114,7 @@ function TeacherAddNewAssignment() {
                     <label>Mô tả bài tập</label>
                     <textarea
                         name="description"
-                        value={assignment.description}
+                        value={newAssignment.description}
                         onChange={handleInputChange}
                         required
                     />
@@ -123,7 +124,7 @@ function TeacherAddNewAssignment() {
                     <input
                         type="datetime-local"
                         name="startDate"
-                        value={assignment.startDate}
+                        value={newAssignment.startDate}
                         onChange={handleInputChange}
                         required
                     />
@@ -133,7 +134,7 @@ function TeacherAddNewAssignment() {
                     <input
                         type="datetime-local"
                         name="endDate"
-                        value={assignment.endDate}
+                        value={newAssignment.endDate}
                         onChange={handleInputChange}
                         required
                     />
@@ -143,7 +144,7 @@ function TeacherAddNewAssignment() {
                     <input
                         type="number"
                         name="duration"
-                        value={assignment.duration}
+                        value={newAssignment.duration}
                         onChange={handleInputChange}
                         required
                     />
@@ -157,39 +158,46 @@ function TeacherAddNewAssignment() {
                         accept=".pdf"
                     />
                 </div>
-                <div>
+                <div className='question-container'>
                     <h3>Câu hỏi</h3>
-                    {assignment.questions.map((question, index) => (
+                    {newAssignment.questions.map((question, index) => (
                         <div key={index}>
-                            <label>Câu hỏi:</label>
-                            <textarea
-                                value={question.question}
-                                onChange={(e) => handleQuestionChange(index, 'question', e.target.value)}
-                                required
-                            />
-                            <label>Đáp án:</label>
-                            {question.answerDtoList.map((answer, answerIndex) => (
-                                <div key={answerIndex}>
-                                    <textarea
-                                        value={answer.answer}
-                                        onChange={(e) => handleAnswerChange(index, answerIndex, 'answer', e.target.value)}
-                                        placeholder="Đáp án"
-                                    />
-                                    <input
-                                        type="checkbox"
-                                        checked={answer.isCorrect}
-                                        onChange={(e) => handleAnswerChange(index, answerIndex, 'isCorrect', e.target.checked)}
-                                    />{' '}Đúng
-                                    <button type="button" onClick={() => removeAnswer(index, answerIndex)}>Xóa đáp án</button>
-                                </div>
-                            ))}
-                            <button type="button" onClick={() => addAnswer(index)}>Thêm đáp án</button>
-                            <button type="button" onClick={() => removeQuestion(index)}>Xóa câu hỏi</button>
+                            <div className='question-content'>
+                                <label>Câu hỏi {index + 1}</label>
+                                <textarea
+                                    value={question.question}
+                                    onChange={(e) => handleQuestionChange(index, 'question', e.target.value)}
+                                    required
+                                />
+                            </div>
+                            <div className='answer-content'>
+                                <label>Đáp án:</label>
+                                {question.answerDtoList.map((answer, answerIndex) => (
+                                    <div key={answerIndex} className='answer'>
+                                        <textarea
+                                            value={answer.answer}
+                                            onChange={(e) => handleAnswerChange(index, answerIndex, 'answer', e.target.value)}
+                                            placeholder="Đáp án"
+                                        />
+                                        <label>
+                                            <input
+                                                type="checkbox"
+                                                checked={answer.isCorrect}
+                                                onChange={(e) => handleAnswerChange(index, answerIndex, 'isCorrect', e.target.checked)}
+                                            />
+                                            Đúng
+                                        </label>
+                                        <button type="button" className="remove-answer-button" onClick={() => removeAnswer(index, answerIndex)}>Xóa đáp án</button>
+                                    </div>
+                                ))}
+                            </div>
+                            <button type="button" className="remove-question-button" onClick={() => removeQuestion(index)}>Xóa câu hỏi</button>
+                            <button type="button" className="add-answer-button" onClick={() => addAnswer(index)}>Thêm đáp án</button>
                         </div>
                     ))}
-                    <button type="button" onClick={addQuestion}>Thêm câu hỏi</button>
+                    <button type="button" className="add-question-button" onClick={addQuestion}>Thêm câu hỏi</button>
                 </div>
-                <button type="submit">Tạo bài tập</button>
+                <button type="submit" className="submit-button">Tạo bài tập</button>
             </form>
         </div>
     );

@@ -1,14 +1,14 @@
-.common-footer {
+footer {
     text-align: center;
     background-color: #003366;
     color: white;
     font-size: 0.9rem;
     border-top: 1px solid #ccc;
     width: 100%;
-    padding: 10px 0; /* Increased padding for better spacing */
+    padding: 10px 0;
 }
 
-.common-footer a {
+footer a {
     color: #d1e0f0;
     text-decoration: none;
 }

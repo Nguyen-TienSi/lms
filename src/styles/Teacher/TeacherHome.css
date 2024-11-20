@@ -1,0 +1,55 @@
+.teacher-home-container {
+    font-family: sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.teacher-home-container h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+.teacher-home-container>div {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.teacher-home-content {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.teacher-home-container h3 {
+    margin-top: 0;
+    color: #007bff;
+}
+
+.teacher-home-container p {
+    margin: 5px 0;
+}
+
+.teacher-home-container a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.teacher-home-container a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 767px) {
+    .teacher-home-container {
+        padding: 10px;
+    }
+
+    .teacher-home-content {
+        box-shadow: none;
+    }
+}

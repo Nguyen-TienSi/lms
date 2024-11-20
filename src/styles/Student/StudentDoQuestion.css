@@ -1,0 +1,59 @@
+.student-do-questions-container {
+    font-family: sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.student-do-questions-container h1,
+.student-do-questions-container h2,
+.student-do-questions-container h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.student-do-questions-container label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.student-do-questions-container input[type="radio"] {
+    margin-right: 5px;
+}
+
+.student-do-questions-container button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.student-do-questions-container button:hover {
+    background-color: #0069d9;
+}
+
+.student-do-questions-container button:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.student-do-questions-container p {
+    margin: 0;
+}
+
+@media (max-width: 767px) {
+    .student-do-questions-container {
+        padding: 10px;
+    }
+
+    .student-do-questions-container form {
+        grid-template-columns: 1fr;
+    }
+
+    .student-do-questions-container button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}

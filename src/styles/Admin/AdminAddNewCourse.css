@@ -1,0 +1,122 @@
+.admin-add-course-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 10px;
+}
+
+.admin-add-course-container .form-section,
+.admin-add-course-container .student-list-section {
+    flex: 1;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.admin-add-course-container .form-section label,
+.admin-add-course-container .student-list-section label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.admin-add-course-container .form-section select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.admin-add-course-container .form-section button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.admin-add-course-container .form-section button[type="submit"]:hover {
+    background-color: #3e8e41;
+}
+
+
+.admin-add-course-container .dropdown-container {
+    position: relative;
+}
+
+.admin-add-course-container .dropdown-container>label {
+    cursor: pointer;
+    display: block;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.admin-add-course-container .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 1;
+    width: 100%;
+}
+
+.admin-add-course-container .dropdown-menu.show {
+    display: block;
+}
+
+.admin-add-course-container .dropdown-item {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.admin-add-course-container .dropdown-item:last-child {
+    border-bottom: none;
+}
+
+@media (max-width: 768px) {
+    .admin-add-course-container .dropdown-menu {
+        width: calc(100vw - 20px);
+        left: -10px;
+    }
+}
+
+.admin-add-course-container .student-list-section button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+    color: red;
+    transition: color 0.3s ease;
+}
+
+.admin-add-course-container .student-list-section button:hover {
+    color: darkred;
+}
+
+@media (max-width: 768px) {
+    .admin-add-course-container {
+        flex-direction: column;
+    }
+
+    .admin-add-course-container .form-section,
+    .admin-add-course-container .student-list-section {
+        width: 100%;
+    }
+
+    .admin-add-course-container .dropdown-menu {
+        width: calc(100vw - 20px);
+        left: -10px;
+    }
+}

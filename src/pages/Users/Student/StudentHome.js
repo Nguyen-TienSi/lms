@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axiosInstance from '../../../service/axios_helper'
 import { Link } from 'react-router-dom';
+import '../../../styles/Student/StudentHome.css'
 
 function StudentHome() {
   const [courses, setCourses] = useState([]);
@@ -48,24 +49,21 @@ function StudentHome() {
         console.error("Error fetching data:", error);
       }
     };
-
     fetchData();
   }, []);
 
   return (
-    <div>
+    <div className='student-home-container'>
       <div>
         <h2>Xin chào {student.firstName + " " + student.lastName}</h2>
       </div>
       <div>
         {courses.map((course, index) => (
-          <div key={index}>
+          <div key={index} className='student-home-content'>
             <Link to={`/course/${course.id}`}>
               <h3>[{course.id}] - {subjects[course.subjectId]?.name}</h3>
-              <ul>
-                <li>Lớp: {classes[course.classId]?.name}</li>
-                <li>Học kỳ: {semester.name}</li>
-              </ul>
+              <p>Lớp: {classes[course.classId]?.name}</p>
+              <p>Học kỳ: {semester.name}</p>
             </Link>
           </div>
         ))}

@@ -1,9 +1,9 @@
 import React from 'react';
-import '../../styles/common/Footer.css';
+import '../../styles/components/Footer.css';
 
 const Footer = () => {
     return (
-        <footer className="common-footer">
+        <footer>
             <p>&copy; 2024 My School. All Rights Reserved.</p>
             <p>
                 Liên hệ: &nbsp;
