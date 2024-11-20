@@ -1,12 +1,12 @@
 import React from 'react';
-import '../../styles/Footer.css';  // Import CSS chung cho cả hệ thống
+import '../../styles/components/Footer.css';
 
 const Footer = () => {
     return (
-        <footer className="common-footer">
-            <p>© 2024 My School. All Rights Reserved.</p>
+        <footer>
+            <p>&copy; 2024 My School. All Rights Reserved.</p>
             <p>
-                Liên hệ: 
+                Liên hệ: &nbsp;
                 <a href="mailto:support@myschool.com">support@myschool.com</a>
             </p>
         </footer>

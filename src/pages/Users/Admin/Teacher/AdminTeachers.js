@@ -1,26 +1,37 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axiosInstance from '../../../../service/axios_helper';
+import { handleFormatDateTime } from '../../../../service/handleFunc';
+import '../../../../styles/Admin/AdminTeachers.css'
 
 function AdminTeachers() {
-  const [teacherData, setTeacherData] = useState([]);
+  const [teachers, setTeacher] = useState([]);
 
   useEffect(() => {
-    loadUser()
+    const fetchData = async () => {
+      try {
+        const teachersResponse = await axiosInstance.get('/api/teachers')
+        setTeacher(teachersResponse.data)
+      } catch (error) {
+        console.error("Error fetching data:", error)
+      }
+    }
+    fetchData()
   }, [])
 
-  const loadUser = async () => {
-    const result = await axiosInstance.get('/api/teachers')
-    setTeacherData(result.data)
-  }
-
   const deleteUser = async (id) => {
-    await axiosInstance.delete(`/api/users/delete/${id}`)
-    loadUser()
+    try {
+      await axiosInstance.delete(`/api/users/delete/${id}`)
+      setTeacher(prevTeachers => prevTeachers.filter(teacher => teacher.userDto.id !== id))
+    } catch (error) {
+      console.error("Error delete object:", error)
+    }
   }
 
   return (
-    <div>
+    <div className='admin-teachers-container'>
+      <h2>Danh sách giáo viên</h2>
+      <Link to={'/teacher/add'}><button>Thêm giáo viên</button></Link>
       <table>
         <thead>
           <tr>
@@ -30,24 +41,29 @@ function AdminTeachers() {
             <th>Giới tính</th>
             <th>Ngày sinh</th>
             <th>Số điện thoại</th>
+            <th>Email</th>
             <th>Hành động</th>
           </tr>
         </thead>
         <tbody>
-          {teacherData.map((teacher, index) => (
-            <tr key={teacher.userDto.id}>
-              <td>{index + 1}</td>
-              <td>{teacher.userDto.id}</td>
-              <td>{teacher.userDto.firstName} {teacher.userDto.lastName}</td>
-              <td>{teacher.userDto.gender}</td>
-              <td>{teacher.userDto.birthDate}</td>
-              <td>{teacher.userDto.phone}</td>
-              <td>
-                <Link to={`/admin/teacher/${teacher.userDto.id}`}>Chi tiết</Link>
-                <button onClick={() => deleteUser(teacher.userDto.id)}>Xóa</button>
-              </td>
-            </tr>
-          ))}
+          {teachers.map((teacher, index) => {
+            const formattedDate = handleFormatDateTime(teacher.userDto.birthDate).formattedDate
+            return (
+              <tr key={teacher.userDto.id}>
+                <td>{index + 1}</td>
+                <td>{teacher.userDto.id}</td>
+                <td>{teacher.userDto.firstName} {teacher.userDto.lastName}</td>
+                <td>{teacher.userDto.gender ? "Nam" : "Nữ"}</td>
+                <td>{formattedDate}</td>
+                <td>{teacher.userDto.phone}</td>
+                <td>{teacher.userDto.username}</td>
+                <td>
+                  <Link to={`/teacher/${teacher.userDto.id}`}>Chi tiết</Link>
+                  <button onClick={() => deleteUser(teacher.userDto.id)}>Xóa</button>
+                </td>
+              </tr>
+            )
+          })}
         </tbody>
       </table>
     </div>

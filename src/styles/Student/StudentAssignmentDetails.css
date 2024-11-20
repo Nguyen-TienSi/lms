@@ -1,0 +1,43 @@
+.student-assignment-details-container {
+    padding: 20px;
+    font-family: sans-serif;
+    line-height: 1.6;
+}
+
+.student-assignment-details-container h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+.student-assignment-details-container p {
+    margin-bottom: 5px;
+}
+
+.student-assignment-details-container strong {
+    font-weight: bold;
+}
+
+.student-assignment-details-container button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.student-assignment-details-container button:hover {
+    background-color: #0069d9;
+}
+
+@media (max-width: 767px) {
+    .student-assignment-details-container {
+        padding: 10px;
+    }
+
+    .student-assignment-details-container button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}

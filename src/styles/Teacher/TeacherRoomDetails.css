@@ -1,0 +1,41 @@
+.teacher-room-details-container {
+    overflow-x: auto;
+    padding: 20px;
+}
+
+.teacher-room-details-container h2 {
+    margin-bottom: 10px;
+}
+
+.teacher-room-details-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.teacher-room-details-container th,
+.teacher-room-details-container td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.teacher-room-details-container th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+@media (max-width: 767px) {
+
+    .teacher-room-details-container th,
+    .teacher-room-details-container td {
+        font-size: 14px;
+    }
+
+    .teacher-room-details-container th {
+        padding: 5px;
+    }
+
+    .teacher-room-details-container td {
+        padding: 5px;
+    }
+}

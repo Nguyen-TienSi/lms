@@ -1,0 +1,76 @@
+.teacher-course-details-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+    padding: 20px;
+}
+
+.teacher-course-details-container div {
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.teacher-course-details-container h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.teacher-course-details-container ul {
+    list-style: none;
+    padding: 0;
+}
+
+.teacher-course-details-container li {
+    margin-bottom: 10px;
+}
+
+.teacher-course-details-container a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.teacher-course-details-container a:hover {
+    text-decoration: underline;
+}
+
+.teacher-course-details-container form {
+    display: grid;
+    grid-gap: 10px;
+}
+
+.teacher-course-details-container label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.teacher-course-details-container input,
+.teacher-course-details-container button {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.teacher-course-details-container button:hover {
+    background-color: #0069d9;
+    font-weight: bold;
+}
+
+.teacher-course-details-container button:active {
+    background-color: #0069d9;
+    font-weight: bold;
+}
+
+.teacher-course-details-container input[type="text"],
+.teacher-course-details-container input[type="file"] {
+    width: 95%;
+}
+
+@media (min-width: 768px) {
+    .teacher-course-details-container {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+}

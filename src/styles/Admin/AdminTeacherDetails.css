@@ -1,0 +1,113 @@
+.admin-teacher-details-container {
+    padding: 20px;
+}
+
+.admin-teacher-details-container h2 {
+    margin-bottom: 15px;
+}
+
+.admin-teacher-details-container form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    grid-gap: 10px;
+}
+
+.admin-teacher-details-container label {
+    margin-bottom: 5px;
+}
+
+.admin-teacher-details-container input[type="text"],
+.admin-teacher-details-container input[type="email"],
+.admin-teacher-details-container input[type="date"],
+.admin-teacher-details-container select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.admin-teacher-details-container input[type="email"]:disabled {
+    background-color: #f2f2f2;
+    cursor: not-allowed;
+}
+
+.admin-teacher-details-container .button-group {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    grid-row: 8;
+    gap: 10px;
+}
+
+.admin-teacher-details-container .button-group button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.admin-teacher-details-container .button-group button:first-of-type {
+    background-color: #007bff;
+    color: white;
+}
+
+.admin-teacher-details-container .button-group button:last-of-type {
+    background-color: #28a745;
+    color: white;
+}
+
+.admin-teacher-details-container .button-group button:hover {
+    opacity: 0.8;
+}
+
+.admin-teacher-details-container .dropdown-container {
+    position: relative;
+}
+
+.admin-teacher-details-container .dropdown-container>label {
+    cursor: pointer;
+    display: block;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.admin-teacher-details-container .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 1;
+    width: 100%;
+}
+
+.admin-teacher-details-container .dropdown-menu.show {
+    display: block;
+}
+
+.admin-teacher-details-container .dropdown-item {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.admin-teacher-details-container .dropdown-item:last-child {
+    border-bottom: none;
+}
+
+@media (max-width: 500px) {
+    .admin-teacher-details-container form {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-add-teacher-container .dropdown-menu {
+        width: calc(100vw - 20px);
+        left: -10px;
+    }
+}
