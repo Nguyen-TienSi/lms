@@ -28,10 +28,11 @@ function StudentAssignmentDetails() {
     }, []);
 
     useEffect(() => {
-        if (Object.keys(submission).length > 0) {
-            setShowButton(false)
+        const endDate = new Date(assignment.endDate);
+        if (Object.keys(submission).length > 0 || !isNaN(endDate) && endDate < new Date()) {
+            setShowButton(false);
         }
-    }, [submission])
+    }, [submission, assignment])
 
     const formatDate = (date) => {
         const { formattedDate, formattedTime, period } = handleFormatDateTime(date);

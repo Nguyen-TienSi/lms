@@ -5,6 +5,7 @@
     padding: 10px;
 }
 
+/* FORM */
 .admin-add-course-container .form-section,
 .admin-add-course-container .student-list-section {
     flex: 1;
@@ -37,13 +38,12 @@
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin-top: 20px;
+    margin: 10px 0;
 }
 
 .admin-add-course-container .form-section button[type="submit"]:hover {
     background-color: #3e8e41;
 }
-
 
 .admin-add-course-container .dropdown-container {
     position: relative;
@@ -85,24 +85,19 @@
     border-bottom: none;
 }
 
-@media (max-width: 768px) {
-    .admin-add-course-container .dropdown-menu {
-        width: calc(100vw - 20px);
-        left: -10px;
-    }
+/* STUDENT LIST */
+.admin-add-course-container .student-list-section > div {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
 }
 
-.admin-add-course-container .student-list-section button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    margin-left: 10px;
-    color: red;
-    transition: color 0.3s ease;
-}
-
-.admin-add-course-container .student-list-section button:hover {
-    color: darkred;
+.admin-add-course-container .student-list-section p {
+    flex-grow: 1;
+    margin: 0;
 }
 
 @media (max-width: 768px) {

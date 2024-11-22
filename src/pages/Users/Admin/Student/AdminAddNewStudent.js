@@ -73,6 +73,7 @@ function AdminAddNewStudent() {
                         onChange={handleUserDtoChange}
                         required
                     >
+                        <option value="">Không xác định</option>
                         <option value={true}>Nam</option>
                         <option value={false}>Nữ</option>
                     </select>

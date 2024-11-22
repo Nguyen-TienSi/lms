@@ -57,8 +57,12 @@ function AdminStudentDetail() {
   };
 
   const handleUpdatestudent = async () => {
-    await axiosIntance.put(`/api/students/update/${parseInt(id, 10)}`, student)
-    window.location.assign('/student')
+    try {
+      await axiosIntance.put(`/api/students/update/${parseInt(id, 10)}`, student)
+      window.location.assign('/student')
+    } catch (error) {
+      console.error("Error update object:", error)
+    }
   }
 
   return (

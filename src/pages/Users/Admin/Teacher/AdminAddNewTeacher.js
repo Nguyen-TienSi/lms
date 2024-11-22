@@ -80,6 +80,7 @@ function AdminAddNewTeacher() {
                 <div>
                     <label>Giới tính</label>
                     <select name='gender' value={userDto.gender} onChange={handleUserDtoChange}>
+                        <option value="">Không xác định</option>
                         <option value={true}>Nam</option>
                         <option value={false}>Nữ</option>
                     </select>
@@ -127,7 +128,7 @@ function AdminAddNewTeacher() {
                                             checked={selectedSubjects.has(subject.id)}
                                             onChange={() => handleSubjectChange(subject.id)}
                                         />
-                                        {subject.name}
+                                        {subject.id + ' - ' + subject.name}
                                     </label>
                                 </div>
                             ))}

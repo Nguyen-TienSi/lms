@@ -73,7 +73,7 @@ function AdminAddNewCourse() {
   const handleSubmit = async () => {
     try {
       await axiosInstance.post('api/courses/add', { ...newCourse, studentIds: Array.from(newCourse.studentIds) });
-      window.location.assign('/course')
+      window.location.href = '/course'
     } catch (error) {
       console.log("Error post object:", error)
     }
@@ -151,7 +151,6 @@ function AdminAddNewCourse() {
                         type="checkbox"
                         checked={newCourse.studentIds.has(student.userDto.id)}
                         onChange={(e) => handleStudentCheckboxChange(student.userDto.id, e.target.checked)}
-                        required
                       />
                       {student.userDto.id + ' - ' + student.userDto.firstName + ' ' + student.userDto.lastName}
                     </label>
@@ -160,7 +159,9 @@ function AdminAddNewCourse() {
               </div>
             </div>
           </div>
-          <button type='submit'>Thêm khóa học</button>
+          <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+            <button type='submit'>Thêm khóa học</button>
+          </div>
         </form>
       </div>
 
@@ -169,10 +170,10 @@ function AdminAddNewCourse() {
         {Array.from(newCourse.studentIds).map((studentId, index) => {
           const student = findStudentById(studentId)
           return (
-            <p key={index}>
-              {student ? student.userDto.firstName + ' ' + student.userDto.lastName : 'Student not found'}
+            <div key={index}>
+              <p>{student.userDto.id + ' - ' + student.userDto.firstName + ' ' + student.userDto.lastName}</p>
               <button type='button' onClick={() => handleRemoveStudent(studentId)}>X</button>
-            </p>
+            </div>
           );
         })}
       </div>

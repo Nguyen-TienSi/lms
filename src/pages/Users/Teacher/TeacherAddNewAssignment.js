@@ -11,7 +11,7 @@ function TeacherAddNewAssignment() {
         startDate: "",
         endDate: "",
         duration: "",
-        file: null,
+        // file: null,
         courseId: parseInt(location.state, 10),
         questions: [],
     });
@@ -20,7 +20,8 @@ function TeacherAddNewAssignment() {
         const { name, value, type, files } = e.target;
         setNewAssignment((prevAssignment) => ({
             ...prevAssignment,
-            [name]: type === 'file' ? files[0] : value,
+            // [name]: type === 'file' ? files[0] : value,
+            [name]: value
         }));
     };
 
@@ -84,7 +85,8 @@ function TeacherAddNewAssignment() {
                 duration: `PT${newAssignment.duration}M`
             };
             appendFormData(formData, formattedAssignment)
-            const response = await axiosInstance.post('/api/assignments/add', formData);
+            // const response = await axiosInstance.post('/api/assignments/add', formData);
+            const response = await axiosInstance.post('/api/assignments/add', formattedAssignment);
             console.log('Assignment created:', response.data);
         } catch (error) {
             console.error('Error creating assignment:', error);
@@ -149,7 +151,7 @@ function TeacherAddNewAssignment() {
                         required
                     />
                 </div>
-                <div>
+                {/* <div>
                     <label>Tập tin</label>
                     <input
                         type="file"
@@ -157,7 +159,7 @@ function TeacherAddNewAssignment() {
                         onChange={handleInputChange}
                         accept=".pdf"
                     />
-                </div>
+                </div> */}
                 <div className='question-container'>
                     <h3>Câu hỏi</h3>
                     {newAssignment.questions.map((question, index) => (
@@ -178,6 +180,7 @@ function TeacherAddNewAssignment() {
                                             value={answer.answer}
                                             onChange={(e) => handleAnswerChange(index, answerIndex, 'answer', e.target.value)}
                                             placeholder="Đáp án"
+                                            required
                                         />
                                         <label>
                                             <input
